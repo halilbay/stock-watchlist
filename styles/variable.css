@@ -1,0 +1,9 @@
+:root {
+  --border-opacity: 1;
+  --text-opacity: 0.75;
+
+  --c-primary: #fff;
+  --c-text-color: #000;
+  --c-background: var(--c-primary);
+  --c-border-color: rgba(51, 51, 51, var(--border-opacity));
+}
