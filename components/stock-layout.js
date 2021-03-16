@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import useSWR, { SWRConfig } from 'swr'
-import { fetcher } from '../../lib/fetch'
-import styles from './style.module.css'
-import Table from '../table'
+import { fetcher } from '../lib/fetch'
 
-export default function Dashboard({ stockList }) {
+import Table from './stock-table'
+
+export default function StockLayout({ stockList }) {
   function DataList() {
     let dataList = []
     stockList.map((stock) => {
@@ -16,7 +16,7 @@ export default function Dashboard({ stockList }) {
   }
 
   return (
-    <div className={styles.table}>
+    <div>
       <SWRConfig
         value={{
           refreshInterval: 30 * 1000,
