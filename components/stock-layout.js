@@ -9,10 +9,10 @@ export default function StockLayout({ stockList }) {
     let dataList = []
     stockList.map((stock) => {
       const { data, error } = useSWR(`/api/stock/${stock}`, fetcher)
-      dataList.push(data?.price.exchange)
+      dataList.push(data?.price)
     })
 
-    return <Table dataList />
+    return <Table dataList={dataList} />
   }
 
   return (
