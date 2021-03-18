@@ -21,6 +21,22 @@ const columns = [
     dataIndex: 'regularMarketPrice'
   },
   {
+    title: 'Default Currency',
+    dataIndex: 'currencySymbol'
+  },
+  {
+    title: 'Count',
+    dataIndex: 'count',
+    editable: true
+  },
+  {
+    title: 'Total',
+    key: 'total',
+    render: (e) => {
+      console.log(e)
+    }
+  },
+  {
     title: 'Change',
     dataIndex: 'regularMarketChange'
   },
@@ -39,7 +55,7 @@ const columns = [
 
 const StockTable = (props) => {
   const { dataList } = props
-  console.log(dataList)
+
   return (
     <Table
       columns={columns}
@@ -48,18 +64,26 @@ const StockTable = (props) => {
       bordered
       summary={(pageData) => {
         let totalMarketPrice = 0
-        /*
-        pageData.forEach(({ maxAge }) => {
-          totalMarketPrice += maxAge
+
+        pageData.forEach((item) => {
+          try {
+            totalMarketPrice += item.regularMarketPrice
+          } catch (error) {
+            console.log(error)
+          }
         })
-*/
+
         return (
           <>
             <Table.Summary.Row>
               <Table.Summary.Cell>Total</Table.Summary.Cell>
+              <Table.Summary.Cell></Table.Summary.Cell>
               <Table.Summary.Cell>
                 <Text type="danger">{totalMarketPrice}</Text>
               </Table.Summary.Cell>
+              <Table.Summary.Cell></Table.Summary.Cell>
+              <Table.Summary.Cell></Table.Summary.Cell>
+              <Table.Summary.Cell></Table.Summary.Cell>
             </Table.Summary.Row>
           </>
         )
